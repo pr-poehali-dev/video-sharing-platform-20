@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ interface HeaderProps {
 }
 
 const Header = ({ onToggleSidebar, searchQuery, onSearchChange }: HeaderProps) => {
+  const navigate = useNavigate();
   const [focused, setFocused] = useState(false);
 
   return (
@@ -25,7 +27,7 @@ const Header = ({ onToggleSidebar, searchQuery, onSearchChange }: HeaderProps) =
           >
             <Icon name="Menu" size={22} />
           </Button>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
             <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
               <Icon name="Play" size={16} className="text-white ml-0.5" />
             </div>

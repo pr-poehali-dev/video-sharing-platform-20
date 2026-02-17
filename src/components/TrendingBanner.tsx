@@ -1,12 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { videos } from "@/data/mockData";
 
 const TrendingBanner = () => {
+  const navigate = useNavigate();
   const featured = videos[4];
 
   return (
-    <div className="relative rounded-2xl overflow-hidden mb-8 group cursor-pointer">
+    <div className="relative rounded-2xl overflow-hidden mb-8 group cursor-pointer" onClick={() => navigate(`/watch/${featured.id}`)}>
       <div className="absolute inset-0">
         <img
           src={featured.thumbnail}

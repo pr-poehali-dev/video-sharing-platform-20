@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { type Video } from "@/data/mockData";
 
@@ -8,6 +9,7 @@ interface VideoCardProps {
 }
 
 const VideoCard = ({ video, index }: VideoCardProps) => {
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -17,6 +19,7 @@ const VideoCard = ({ video, index }: VideoCardProps) => {
       style={{ animationDelay: `${index * 60}ms`, animationFillMode: "both" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => navigate(`/watch/${video.id}`)}
     >
       <div className="relative aspect-video rounded-xl overflow-hidden bg-secondary mb-3">
         {!imgLoaded && (
